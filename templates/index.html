@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">HOPE SPRINGS HOSPITAL · SMART QUEUE</span>
+    <h1>Your health matters.<br><em>Your time does too.</em></h1>
+    <p>Book a doctor queue, share your symptoms, and arrive with a clearer plan. Less uncertainty for patients and a more organized clinic for hospital teams.</p>
+    <div class="hero-actions"><a class="btn primary" href="{{ url_for('register') }}">Get started <span>→</span></a><a class="btn ghost" href="#doctors">Explore doctors</a></div>
+    <div class="hero-note"><span class="pulse"></span> One simple place to manage your visit</div>
+  </div>
+  <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="health-card"><div class="health-icon">✚</div><span class="muted">YOUR VISIT, ORGANIZED</span><h3>Queue booking</h3><div class="mini-line"></div><div class="mini-row"><span>Doctor selection</span><b>✓</b></div><div class="mini-row"><span>Symptom guidance</span><b>✓</b></div><div class="mini-row"><span>Queue status</span><b>✓</b></div><div class="card-footer"><span class="green-dot"></span> Built around your time</div></div><div class="floating-cross">✚</div></div>
+</section>
+<section class="stats"><div><strong>4</strong><span>Connected portals</span></div><div><strong>1</strong><span>Patient-friendly journey</span></div><div><strong>24/7</strong><span>Online booking access</span></div><div><strong>∞</strong><span>Room to improve care</span></div></section>
+<section class="section" id="how"><div class="section-heading"><span class="eyebrow">HOW IT WORKS</span><h2>A smoother visit in <em>three steps.</em></h2><p>From symptom selection to a queue number, Queueless keeps the process clear.</p></div><div class="feature-grid"><article class="feature"><span class="feature-num">01</span><div class="feature-icon">◎</div><h3>Create your profile</h3><p>Register with your contact and basic patient information for a more organized booking.</p></article><article class="feature"><span class="feature-num">02</span><div class="feature-icon">⌕</div><h3>Choose symptoms</h3><p>Select from the provided list and view a general speciality suggestion to guide your choice.</p></article><article class="feature"><span class="feature-num">03</span><div class="feature-icon">↗</div><h3>Book your queue</h3><p>Pick an available doctor and date, then keep track of your queue status from your dashboard.</p></article></div></section>
+<section class="section doctor-section" id="doctors"><div class="section-heading row-heading"><div><span class="eyebrow">MEET THE CARE TEAM</span><h2>Find the right <em>specialist.</em></h2></div><p>Sample doctor directory and schedules for the Hope Springs Hospital project.</p></div><div class="doctor-grid">{% for d in doctors %}<article class="doctor-card"><div class="doctor-avatar">{{ d.full_name.split(' ')[1][0] if d.full_name.split()|length > 1 else d.full_name[0] }}</div><div><h3>{{ d.full_name }}</h3><span class="speciality">{{ d.speciality }}</span><p>{{ d.qualification or 'Qualified medical professional' }}</p></div></article>{% endfor %}</div><p class="small-note">Schedules are illustrative demo data. Confirm availability with the hospital before visiting.</p></section>
+<section class="section staff-section" id="staff-portals">
+  <div class="section-heading"><span class="eyebrow">DEDICATED WORKSPACES</span><h2>Choose your <em>portal.</em></h2><p>Hospital staff use their assigned account to access the tools for their role.</p></div>
+  <div class="portal-grid">
+    <a class="portal-card" href="{{ url_for('login', role='app_admin') }}"><span class="portal-icon">A</span><div><h3>App Management Admin</h3><p>System overview, accounts and platform access.</p><span>Open admin login →</span></div></a>
+    <a class="portal-card" href="{{ url_for('login', role='hospital_admin') }}"><span class="portal-icon">H</span><div><h3>Hospital Management Admin</h3><p>Manage doctors, specialities and weekly schedules.</p><span>Open hospital login →</span></div></a>
+    <a class="portal-card" href="{{ url_for('login', role='queue_manager') }}"><span class="portal-icon">Q</span><div><h3>Doctor's Queue Assistant</h3><p>Manage the queue for your assigned doctor.</p><span>Open queue login →</span></div></a>
+    <a class="portal-card" href="{{ url_for('login', role='patient') }}"><span class="portal-icon">P</span><div><h3>Patient / User</h3><p>Book appointments and follow your queue status.</p><span>Patient login →</span></div></a>
+  </div>
+</section>
+<section class="cta-band"><div><span class="eyebrow">READY WHEN YOU ARE</span><h2>Make your next visit<br>feel more <em>in control.</em></h2></div><a class="btn light" href="{{ url_for('register') }}">Create your account →</a></section>
+{% endblock %}
