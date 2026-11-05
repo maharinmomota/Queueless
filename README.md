@@ -43,7 +43,6 @@ The main goal of Queueless is to reduce physical waiting time, improve appointme
 This project was developed for academic and educational purposes as part of the SDP-I course. It is a student demonstration project and is not intended for handling real patient data or use in a production hospital environment.
 
 ---
-
 **Project Name:** Queueless – Smart Hospital Queue Management System  
 **Course:** Software Development Project I (SDP-I)  
 **Department:** Computer Science and Engineering  
